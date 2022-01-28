@@ -15,6 +15,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
