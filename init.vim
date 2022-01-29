@@ -18,6 +18,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
+Plug 'akinsho/toggleterm.nvim'
+
 call plug#end()
 
 :lua require('config')

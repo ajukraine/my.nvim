@@ -79,3 +79,9 @@ require('gitsigns').setup {
   end
 }
 
+require("toggleterm").setup{
+  direction = 'float',
+  shell = 'powershell',
+  open_mapping = [[<c-\>]]
+}
+
