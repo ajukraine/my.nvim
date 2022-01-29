@@ -20,6 +20,8 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'akinsho/toggleterm.nvim'
 
+Plug 'dstein64/vim-startuptime'
+
 call plug#end()
 
 :lua require('config')
