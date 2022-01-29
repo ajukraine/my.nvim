@@ -6,6 +6,7 @@ Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'digitaltoad/vim-pug'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-unimpaired'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/twilight.nvim'
@@ -51,5 +52,6 @@ nnoremap <leader>z :Twilight<CR>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fs <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Git<cr>
 
 nmap <leader><Tab> :bnext<CR>
