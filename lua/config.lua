@@ -8,6 +8,7 @@ require('nvim-treesitter.configs').setup {
     disable = {},
   },
   ensure_installed = {
+    "javascript",
     "tsx",
     "toml",
     "fish",
@@ -19,6 +20,7 @@ require('nvim-treesitter.configs').setup {
     "scss",
     "lua"
   },
+  sync_install = false
 }
 
 local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
