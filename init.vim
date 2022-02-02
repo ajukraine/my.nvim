@@ -59,6 +59,8 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+set scrolloff=5
+
 let mapleader = " "
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
