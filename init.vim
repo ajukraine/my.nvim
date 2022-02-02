@@ -70,5 +70,5 @@ nnoremap <leader>fs <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Git<cr>
 
-nmap <leader><Tab> :bnext<CR>
+nnoremap <Tab> :bnext<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
