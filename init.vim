@@ -4,6 +4,7 @@ call plug#begin()
 
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-gruvbox8'
+Plug 'sainnhe/gruvbox-material'
 Plug 'digitaltoad/vim-pug'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-unimpaired'
@@ -34,9 +35,11 @@ syntax on
 
 set termguicolors
 set background=dark
-autocmd vimenter * ++nested colorscheme gruvbox8_hard
+autocmd vimenter * ++nested colorscheme gruvbox-material
 
 let g:gruvbox_italics = 0
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_italic = 0
 
 set number relativenumber
 set cursorline
