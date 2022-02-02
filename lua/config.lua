@@ -91,6 +91,11 @@ require('nvim-tree').setup {
   update_cwd = true
 }
 
+vim.g.nvim_tree_icons = {
+  default = '',
+  symlink = ''
+}
+
 require('lualine').setup {
   options = {
     theme = 'gruvbox-material'
