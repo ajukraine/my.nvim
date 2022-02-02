@@ -20,6 +20,9 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'akinsho/toggleterm.nvim'
 
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 Plug 'dstein64/vim-startuptime'
 
 call plug#end()
@@ -31,7 +34,9 @@ syntax on
 
 set termguicolors
 set background=dark
-autocmd vimenter * ++nested colorscheme gruvbox8
+autocmd vimenter * ++nested colorscheme gruvbox8_hard
+
+let g:gruvbox_italics = 0
 
 set number relativenumber
 set cursorline
@@ -59,3 +64,4 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Git<cr>
 
 nmap <leader><Tab> :bnext<CR>
+nnoremap <C-n> :NvimTreeToggle<CR>

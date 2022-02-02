@@ -87,3 +87,6 @@ require("toggleterm").setup{
   open_mapping = [[<c-\>]]
 }
 
+require('nvim-tree').setup {
+  update_cwd = true
+}
