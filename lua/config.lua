@@ -90,3 +90,24 @@ require("toggleterm").setup{
 require('nvim-tree').setup {
   update_cwd = true
 }
+
+require('lualine').setup {
+  options = {
+    theme = 'gruvbox-material'
+  },
+  sections = {
+    lualine_x = {
+      'encoding',
+      'fileformat',
+      {
+        'filetype',
+        colored = false
+      }
+    }
+  },
+
+  tabline = {
+    lualine_a = {'buffers'}
+  },
+  extensions = { 'nvim-tree' }
+}

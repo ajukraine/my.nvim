@@ -21,6 +21,8 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'akinsho/toggleterm.nvim'
 
+Plug 'nvim-lualine/lualine.nvim'
+
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
