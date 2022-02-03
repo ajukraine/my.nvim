@@ -13,6 +13,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/twilight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
+Plug 'neovim/nvim-lspconfig'
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -25,6 +27,9 @@ Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
+Plug 'nathom/filetype.nvim'
 
 Plug 'dstein64/vim-startuptime'
 
@@ -72,3 +77,4 @@ nnoremap <leader>g <cmd>Git<cr>
 
 nnoremap <Tab> :bnext<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
+

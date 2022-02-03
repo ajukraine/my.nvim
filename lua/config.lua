@@ -18,7 +18,8 @@ require('nvim-treesitter.configs').setup {
     -- "swift",
     "html",
     "scss",
-    "lua"
+    "lua",
+    "elixir"
   },
   sync_install = false
 }
@@ -115,4 +116,17 @@ require('lualine').setup {
     lualine_a = {'buffers'}
   },
   extensions = { 'nvim-tree' }
+}
+
+vim.g['fsharp#fsautocomplete_command'] = { 'fsautocomplete',  '--background-service-enabled' }
+vim.g['fsharp#lsp_auto_setup'] = 0
+require('ionide').setup {}
+
+require('filetype').setup {
+  overrides = {
+    extensions = {
+      fsproj = "xml",
+      fs = "fsharp"
+    }
+  }
 }
