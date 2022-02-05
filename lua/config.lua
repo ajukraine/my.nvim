@@ -19,7 +19,8 @@ require('nvim-treesitter.configs').setup {
     "html",
     "scss",
     "lua",
-    "elixir"
+    "elixir",
+    "c"
   },
   sync_install = false
 }
@@ -129,4 +130,6 @@ require('filetype').setup {
       fs = "fsharp"
     }
   }
+}
+lspconfig.clangd.setup {
 }
