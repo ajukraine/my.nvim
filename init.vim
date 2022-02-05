@@ -12,6 +12,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/twilight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 Plug 'neovim/nvim-lspconfig'
 

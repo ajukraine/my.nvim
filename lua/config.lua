@@ -22,7 +22,20 @@ require('nvim-treesitter.configs').setup {
     "elixir",
     "c"
   },
-  sync_install = false
+  sync_install = false,
+  refactor = {
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = false,
+    },
+  },
 }
 
 local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
