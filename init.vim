@@ -24,6 +24,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
+Plug 'mhinz/vim-startify'
+
 Plug 'akinsho/toggleterm.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
