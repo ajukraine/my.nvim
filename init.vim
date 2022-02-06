@@ -2,10 +2,10 @@ set nocompatible
 
 call plug#begin()
 
-Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-gruvbox8'
+" Plug 'morhetz/gruvbox'
+" Plug 'lifepillar/vim-gruvbox8'
 Plug 'sainnhe/gruvbox-material'
-Plug 'digitaltoad/vim-pug'
+
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-unimpaired'
 
@@ -25,16 +25,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'mhinz/vim-startify'
-
-Plug 'akinsho/toggleterm.nvim'
-
 Plug 'nvim-lualine/lualine.nvim'
-
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/toggleterm.nvim'
 
 Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
 Plug 'nathom/filetype.nvim'
+Plug 'digitaltoad/vim-pug'
 
 Plug 'dstein64/vim-startuptime'
 
