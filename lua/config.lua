@@ -37,18 +37,6 @@ require('nvim-treesitter.configs').setup {
       clear_on_cursor_move = false,
     },
   },
-}
-
-local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
-
-require("twilight").setup {
-  dimming = {
-    inactive = true
-  },
-}
-
-require("nvim-treesitter.configs").setup {
   textobjects = {
     select = {
       enable = true,
@@ -59,6 +47,15 @@ require("nvim-treesitter.configs").setup {
       }
     }
   }
+}
+
+local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
+parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+
+require("twilight").setup {
+  dimming = {
+    inactive = true
+  },
 }
 
 require('gitsigns').setup {
@@ -97,19 +94,19 @@ require('gitsigns').setup {
   end
 }
 
-require("toggleterm").setup{
+require("toggleterm").setup {
   direction = 'float',
   shell = 'powershell',
   open_mapping = [[<c-\>]]
 }
 
-require('nvim-tree').setup {
-  update_cwd = true
-}
-
 vim.g.nvim_tree_icons = {
   default = '',
   symlink = ''
+}
+
+require('nvim-tree').setup {
+  update_cwd = true
 }
 
 require('lualine').setup {
@@ -143,7 +140,6 @@ require('filetype').setup {
   }
 }
 
-
 -- Add additional capabilities supported by nvim-cmp
 local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
 cmp_capabilities = require('cmp_nvim_lsp')
@@ -162,7 +158,7 @@ require('ionide').setup {
 
 local pid = vim.fn.getpid()
 
-local util = require('lspconfig').util
+local util = lspconfig.util
 lspconfig.omnisharp.setup {
   cmd = { "omnisharp.exe", "--languageserver" , "--hostPID", tostring(pid) },
   filetypes = { 'cs', 'csx' },
@@ -182,6 +178,8 @@ lspconfig.omnisharp.setup {
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
+
+require("luasnip.loaders.from_snipmate").load()
 
 cmp.setup {
   formatting = {
@@ -236,6 +234,4 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
-require("luasnip.loaders.from_snipmate").load()
 
