@@ -31,6 +31,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/toggleterm.nvim'
 
 Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
+" Plug 'OmniSharp/omnisharp-vim'
 Plug 'nathom/filetype.nvim'
 Plug 'digitaltoad/vim-pug'
 

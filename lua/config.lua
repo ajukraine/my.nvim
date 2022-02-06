@@ -20,7 +20,8 @@ require('nvim-treesitter.configs').setup {
     "scss",
     "lua",
     "elixir",
-    "c"
+    "c",
+    "c_sharp"
   },
   sync_install = false,
   refactor = {
@@ -136,7 +137,8 @@ require('filetype').setup {
   overrides = {
     extensions = {
       fsproj = "xml",
-      fs = "fsharp"
+      fs = "fsharp",
+      csx = "cs"
     }
   }
 }
@@ -155,6 +157,24 @@ vim.g['fsharp#fsautocomplete_command'] = { 'fsautocomplete',  '--background-serv
 vim.g['fsharp#lsp_auto_setup'] = 0
 require('ionide').setup {
   capabilities = cmp_capabilities
+}
+
+local pid = vim.fn.getpid()
+
+local util = require('lspconfig').util
+lspconfig.omnisharp.setup {
+  cmd = { "omnisharp.exe", "--languageserver" , "--hostPID", tostring(pid) },
+  filetypes = { 'cs', 'csx' },
+  capabilities = cmp_capabilities,
+  root_dir = function(file, _)
+    if file:sub(-#".csx") == ".csx" then
+      return util.path.dirname(file)
+    end
+    return util.root_pattern("*.sln")(file) or util.root_pattern("*.csproj")(file)
+  end,
+  -- on_attach = function(_, bufnr)
+  --   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- end
 }
 
 -- nvim-cmp setup
