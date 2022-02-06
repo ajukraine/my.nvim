@@ -34,6 +34,8 @@ Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .
 Plug 'nathom/filetype.nvim'
 Plug 'digitaltoad/vim-pug'
 
+Plug 'neomake/neomake'
+
 Plug 'dstein64/vim-startuptime'
 
 call plug#end()
