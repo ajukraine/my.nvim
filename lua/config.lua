@@ -24,7 +24,25 @@ require('packer').startup(function ()
   
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-unimpaired'
-  --
+
+  use { 'kyazdani42/nvim-web-devicons', opt = true }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    cmd = 'NvimTreeToggle',
+    config = function ()
+      vim.g.nvim_tree_icons = {
+        default = '',
+        symlink = ''
+      }
+
+      require('nvim-tree').setup {
+        update_cwd = true
+      }
+    end
+  }
+
   -- use 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -47,8 +65,6 @@ require('packer').startup(function ()
   --
   -- use 'mhinz/vim-startify'
   -- use 'nvim-lualine/lualine.nvim'
-  -- use 'kyazdani42/nvim-web-devicons' -- for file icons
-  -- use 'kyazdani42/nvim-tree.lua'
   -- use 'akinsho/toggleterm.nvim'
   --
   -- use 'ionide/Ionide-vim' --, { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
@@ -162,14 +178,6 @@ end)
 --   open_mapping = [[<c-\>]]
 -- }
 --
--- vim.g.nvim_tree_icons = {
---   default = '',
---   symlink = ''
--- }
---
--- require('nvim-tree').setup {
---   update_cwd = true
--- }
 --
 -- require('lualine').setup {
 --   options = {
