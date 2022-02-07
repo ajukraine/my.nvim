@@ -1,50 +1,52 @@
+:lua require('impatient').enable_profile()
+
 set nocompatible
 
-call plug#begin()
+" call plug#begin()
 
 " Plug 'morhetz/gruvbox'
 " Plug 'lifepillar/vim-gruvbox8'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
 
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-unimpaired'
+" Plug 'tomtom/tcomment_vim'
+" Plug 'tpope/vim-unimpaired'
+"
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'folke/twilight.nvim'
+" Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Plug 'nvim-treesitter/nvim-treesitter-refactor'
+"
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'onsails/lspkind-nvim'
+"
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
+" Plug 'honza/vim-snippets'
+"
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+"
+" Plug 'tpope/vim-fugitive'
+" Plug 'lewis6991/gitsigns.nvim'
+"
+" Plug 'mhinz/vim-startify'
+" Plug 'nvim-lualine/lualine.nvim'
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'akinsho/toggleterm.nvim'
+"
+" Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
+" " Plug 'OmniSharp/omnisharp-vim'
+" Plug 'nathom/filetype.nvim'
+" Plug 'digitaltoad/vim-pug'
+"
+" Plug 'neomake/neomake'
+"
+" Plug 'dstein64/vim-startuptime'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'folke/twilight.nvim'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'onsails/lspkind-nvim'
-
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'honza/vim-snippets'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
-
-Plug 'mhinz/vim-startify'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'akinsho/toggleterm.nvim'
-
-Plug 'ionide/Ionide-vim' ", { 'do':  'powershell -ExecutionPolicy Unrestricted .\install.ps1' }
-" Plug 'OmniSharp/omnisharp-vim'
-Plug 'nathom/filetype.nvim'
-Plug 'digitaltoad/vim-pug'
-
-Plug 'neomake/neomake'
-
-Plug 'dstein64/vim-startuptime'
-
-call plug#end()
+" call plug#end()
 
 :lua require('config')
 
