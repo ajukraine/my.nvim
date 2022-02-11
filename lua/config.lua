@@ -26,7 +26,7 @@ require('packer').startup(function ()
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-unimpaired'
 
-  use { 'kyazdani42/nvim-web-devicons', opt = true }
+  use { 'kyazdani42/nvim-web-devicons', opt = false }
 
   use {
     'kyazdani42/nvim-tree.lua',
