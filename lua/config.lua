@@ -23,7 +23,14 @@ require('packer').startup(function ()
 
   use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
   
-  use 'tomtom/tcomment_vim'
+  -- use 'tomtom/tcomment_vim'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
   use 'tpope/vim-unimpaired'
   use 'junegunn/vim-easy-align'
 
