@@ -12,9 +12,9 @@ nnoremap('<leader>fb', ':Telescope buffers<cr>')
 nnoremap('<leader>fs', ':Telescope current_buffer_fuzzy_find<cr>')
 nnoremap('<leader>ff', ':Telescope find_files<cr>')
 nnoremap('<leader>g',  ':Git<cr>')
+nnoremap('<leader>e',  ':NvimTreeToggle<CR>')
 
 nnoremap('<Tab>',      ':bnext<CR>')
 nnoremap('<S-Tab>',    ':bprev<CR>')
-nnoremap('<C-n>',      ':NvimTreeToggle<CR>')
 
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
