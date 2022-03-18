@@ -17,4 +17,6 @@ nnoremap('<leader>e',  ':NvimTreeToggle<CR>')
 nnoremap('<Tab>',      ':bnext<CR>')
 nnoremap('<S-Tab>',    ':bprev<CR>')
 
+nnoremap('<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
