@@ -1,10 +1,6 @@
 local utils = require('utils')
-local nnoremap = utils.nnoremap
 local map = utils.map
-
-local function cmd(shortcut, command)
-  return nnoremap(shortcut, ':' .. command .. '<CR>')
-end
+local cmd = utils.cmd
 
 vim.g.mapleader = ' '
 

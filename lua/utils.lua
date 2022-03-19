@@ -5,7 +5,7 @@ local M = { }
 --   local mode = 'n'
 --
 --   if opts then options = vim.tbl_extend('force', options, opts) end
---   
+--
 --   vim.api.nvim_set_keymap(mode, shortcut, command, options)
 -- end
 
@@ -24,5 +24,10 @@ end
 function M.nnoremap(shortcut, command)
   M.map('n', shortcut, command, { noremap = true })
 end
+
+function M.cmd(shortcut, command)
+  return M.nnoremap(shortcut, ':' .. command .. '<CR>')
+end
+
 
 return M
