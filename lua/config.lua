@@ -1,5 +1,4 @@
-require('packer').startup(function ()
-
+local function plugins()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -22,7 +21,7 @@ require('packer').startup(function ()
   }
 
   use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
-  
+
   -- Alternative to 'tomtom/tcomment_vim'
   use {
     'numToStr/Comment.nvim',
@@ -54,13 +53,124 @@ require('packer').startup(function ()
 
   use {
     'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add    = { text = '+' },
+          change = { text = '~' }
+        },
+        on_attach = function(bufnr)
+          -- TODO: replace with ajukraine's utils.map function
+          local function map(mode, lhs, rhs, opts)
+            opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+          end
+
+          -- Navigation
+          map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+          map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+          -- Actions
+          -- map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
+          -- map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
+          -- map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
+          -- map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
+          -- map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+          -- map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+          -- map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+          -- map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+          -- map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+          -- map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+          -- map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+          -- map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+          -- map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+
+          -- Text object
+          -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+          -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+        end
+      }
+    end
   }
 
-  use 'nvim-treesitter/nvim-treesitter'--[[ , {'do': ':TSUpdate'} ]]
+  use {
+    'nvim-treesitter/nvim-treesitter', --[[ , {'do': ':TSUpdate'} ]]
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        highlight = {
+          enable = true,
+          disable = {},
+        },
+        indent = {
+          enable = false,
+          disable = {},
+        },
+        ensure_installed = {
+          -- "javascript",
+          -- "tsx",
+          -- "toml",
+          -- "fish",
+          -- "php",
+          -- "json",
+          -- "yaml",
+          -- "swift",
+          -- "html",
+          -- "scss",
+          "lua",
+          -- "elixir",
+          -- "c",
+          "c_sharp"
+        },
+        sync_install = false,
+        -- refactor = {
+        --   smart_rename = {
+        --     enable = true,
+        --     keymaps = {
+        --       smart_rename = "grr",
+        --     },
+        --   },
+        --   highlight_definitions = {
+        --     enable = true,
+        --     -- Set to false if you have an `updatetime` of ~100.
+        --     clear_on_cursor_move = false,
+        --   },
+        -- },
+        -- textobjects = {
+        --   select = {
+        --     enable = true,
+        --     lookahead = true,
+        --     keymaps = {
+        --       ["af"] = "@function.outer",
+        --       ["if"] = "@function.inner",
+        --     }
+        --   }
+        -- }
+      }
+    end
+  }
 
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {
+    'williamboman/nvim-lsp-installer',
+    config = function ()
+      -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+      -- or if the server is already installed).
+      require("nvim-lsp-installer").on_server_ready(function(server)
+        local opts = {}
+
+        -- (optional) Customize the options passed to the server
+        -- if server.name == "tsserver" then
+        --     opts.root_dir = function() ... end
+        -- end
+
+        -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+        -- before passing it onwards to lspconfig.
+        -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+        server:setup(opts)
+      end)
+    end
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -92,59 +202,18 @@ require('packer').startup(function ()
   --
   -- use 'neomake/neomake'
   --
-end)
+end
 
+require('packer').startup({
+  plugins,
+  config = {
+    profile = {
+      enable = true,
+      threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    }
+  }
+})
 
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-  indent = {
-    enable = false,
-    disable = {},
-  },
-  ensure_installed = {
-    -- "javascript",
-    -- "tsx",
-    -- "toml",
-    -- "fish",
-    -- "php",
-    -- "json",
-    -- "yaml",
-    -- "swift",
-    -- "html",
-    -- "scss",
-    "lua",
-    -- "elixir",
-    -- "c",
-    "c_sharp"
-  },
-  sync_install = false,
-  -- refactor = {
-  --   smart_rename = {
-  --     enable = true,
-  --     keymaps = {
-  --       smart_rename = "grr",
-  --     },
-  --   },
-  --   highlight_definitions = {
-  --     enable = true,
-  --     -- Set to false if you have an `updatetime` of ~100.
-  --     clear_on_cursor_move = false,
-  --   },
-  -- },
-  -- textobjects = {
-  --   select = {
-  --     enable = true,
-  --     lookahead = true,
-  --     keymaps = {
-  --       ["af"] = "@function.outer",
-  --       ["if"] = "@function.inner",
-  --     }
-  --   }
-  -- }
-}
 --
 -- local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()
 -- parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
@@ -155,42 +224,6 @@ require('nvim-treesitter.configs').setup {
 --   },
 -- }
 --
-require('gitsigns').setup {
-  signs = {
-    add    = { text = '+' },
-    change = { text = '~' }
-  },
-  on_attach = function(bufnr)
-    -- TODO: replace with ajukraine's utils.map function
-    local function map(mode, lhs, rhs, opts)
-        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-    end
-   
-    -- Navigation
-    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
-   
-    -- Actions
-    -- map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-    -- map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-    -- map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-    -- map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-    -- map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
-    -- map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
-    -- map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
-    -- map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
-    -- map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-    -- map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
-    -- map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
-    -- map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-    -- map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
-   
-    -- Text object                                       
-    -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-    -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
-}
 --
 -- require("toggleterm").setup {
 --   direction = 'float',
@@ -230,24 +263,6 @@ require('gitsigns').setup {
 --   }
 -- }
 --
-
-local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
 
 -- -- Add additional capabilities supported by nvim-cmp
 -- local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
