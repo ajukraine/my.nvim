@@ -62,6 +62,11 @@ require('packer').startup(function ()
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
 
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
@@ -74,8 +79,6 @@ require('packer').startup(function ()
   -- use 'saadparwaiz1/cmp_luasnip'
   -- use 'honza/vim-snippets'
   --
-  -- use 'nvim-lua/plenary.nvim'
-  -- use 'nvim-telescope/telescope.nvim'
   --
   -- use 'tpope/vim-fugitive'
   --

@@ -23,4 +23,8 @@ cmd('<S-Tab>',    'bprev')
 
 cmd('<leader>gb', 'Gitsigns toggle_current_line_blame')
 
+cmd('<leader><leader>b', 'Telescope buffers')
+cmd('<leader><leader>ls', "lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}")
+cmd('<leader><leader>lr', "lua require'telescope.builtin'.lsp_references{}")
+
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
