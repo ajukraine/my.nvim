@@ -18,19 +18,28 @@ cmd('<leader>gb', 'Gitsigns toggle_current_line_blame')
 
 -- Telescope
 local telescope_prefix = '<leader><leader>'
-local telescope_mappings = {
+local telescope_pickers = {
   ['b']  = 'buffers',
   ['f']  = 'find_files',
-  ['g']  = 'git_files',
+  ['gf'] = 'git_files',
+  ['gs'] = 'git_status',
   ['s']  = 'current_buffer_fuzzy_find',
   ['ls'] = 'lsp_dynamic_workspace_symbols',
   ['lr'] = 'lsp_references',
   ['li'] = 'lsp_implementations',
-  ['la'] = 'lsp_code_actions',
+  ['la'] = { 'lsp_code_actions', initial_mode = 'normal' },
 }
 
-for key, picker in pairs(telescope_mappings) do
-  cmd(telescope_prefix .. key, "lua require'telescope.builtin'." .. picker .. "{}")
+for key, picker in pairs(telescope_pickers) do
+  local opts = {}
+  if type(picker) == 'table' then
+    -- TODO: remove 1st element from 'picker'
+    opts = picker
+    picker = picker[1]
+  end
+
+  cmd(telescope_prefix .. key,
+    function() require'telescope.builtin'[picker](opts) end)
 end
 
 

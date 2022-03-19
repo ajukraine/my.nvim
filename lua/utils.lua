@@ -13,11 +13,11 @@ function M.map(modes, shortcut, command, options)
   options = options or {}
 
   if type(modes) ~= 'table' then
-    return vim.api.nvim_set_keymap(modes, shortcut, command, options)
+    return vim.keymap.set(modes, shortcut, command, options)
   end
 
   for _, mode in ipairs(modes) do
-    vim.api.nvim_set_keymap(mode, shortcut, command, options)
+    vim.keymap.set(mode, shortcut, command, options)
   end
 end
 
@@ -26,6 +26,10 @@ function M.nnoremap(shortcut, command)
 end
 
 function M.cmd(shortcut, command)
+  if type(command) == 'function' then
+    return M.nnoremap(shortcut, command)
+  end
+
   return M.nnoremap(shortcut, ':' .. command .. '<CR>')
 end
 
