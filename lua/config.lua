@@ -10,14 +10,14 @@ local function configure_plugins(use)
 
   use {
     'sainnhe/gruvbox-material',
-    setup = function ()
-      vim.g.gruvbox_material_better_performance = 1
-
-      vim.g.gruvbox_italics = 0
-      vim.g.gruvbox_material_transparent_background = 0
-      vim.g.gruvbox_material_background = 'hard'
-      vim.g.gruvbox_material_enable_italic = 0
-    end
+    -- setup = function ()
+    --   vim.g.gruvbox_material_better_performance = 1
+    --
+    --   vim.g.gruvbox_italics = 0
+    --   vim.g.gruvbox_material_transparent_background = 0
+    --   vim.g.gruvbox_material_background = 'hard'
+    --   vim.g.gruvbox_material_enable_italic = 0
+    -- end
   }
 
   use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
@@ -215,7 +215,18 @@ local function configure_plugins(use)
   --
 end
 
-require('packer').startup({
+local packer = require('packer')
+
+packer.set_handler(1, function (_, plugin_spec, _)
+  if not plugin_spec.setup then
+    local ok, aj = pcall(require, 'aj.' .. plugin_spec.short_name)
+    if ok then
+      plugin_spec.setup = aj.setup
+    end
+  end
+end)
+
+packer.startup({
   configure_plugins,
   config = {
     profile = {
