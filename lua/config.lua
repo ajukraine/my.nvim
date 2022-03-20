@@ -1,4 +1,4 @@
-local function plugins()
+local function configure_plugins(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -25,9 +25,7 @@ local function plugins()
   -- Alternative to 'tomtom/tcomment_vim'
   use {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
+    config = function() require('Comment').setup() end
   }
 
   use 'tpope/vim-unimpaired'
@@ -217,7 +215,7 @@ local function plugins()
 end
 
 require('packer').startup({
-  plugins,
+  configure_plugins,
   config = {
     profile = {
       enable = true,
