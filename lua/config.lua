@@ -8,185 +8,35 @@ local function configure_plugins(use)
   -- Improves startup time with use of optimizations and caching
   use 'lewis6991/impatient.nvim'
 
-  use {
-    'sainnhe/gruvbox-material',
-    -- setup = function ()
-    --   vim.g.gruvbox_material_better_performance = 1
-    --
-    --   vim.g.gruvbox_italics = 0
-    --   vim.g.gruvbox_material_transparent_background = 0
-    --   vim.g.gruvbox_material_background = 'hard'
-    --   vim.g.gruvbox_material_enable_italic = 0
-    -- end
-  }
-
   use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
 
-  -- Alternative to 'tomtom/tcomment_vim'
-  use {
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end
-  }
+  use 'sainnhe/gruvbox-material'
 
   use 'tpope/vim-unimpaired'
   use 'junegunn/vim-easy-align'
 
   use { 'kyazdani42/nvim-web-devicons', opt = false }
 
+  -- FIX: Currently can't load config with '.' suffix in name
   use {
     'kyazdani42/nvim-tree.lua',
+    as = 'nvim-tree',
     requires = { 'kyazdani42/nvim-web-devicons' },
     cmd = 'NvimTreeToggle',
-    config = function ()
-      vim.g.nvim_tree_icons = {
-        default = '',
-        symlink = ''
-      }
-
-      require('nvim-tree').setup {
-        update_cwd = true
-      }
-    end
   }
 
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitsigns').setup {
-        signs = {
-          add    = { text = '+' },
-          change = { text = '~' }
-        },
-        on_attach = function(bufnr)
-          -- TODO: replace with ajukraine's utils.map function
-          local function map(mode, lhs, rhs, opts)
-            opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-          end
+  use { 'lewis6991/gitsigns.nvim', as = 'gitsigns', requires = { 'nvim-lua/plenary.nvim' }, }
 
-          -- Navigation
-          map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-          map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
-
-          -- Actions
-          -- map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-          -- map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-          -- map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-          -- map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-          -- map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
-          -- map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
-          -- map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
-          -- map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
-          -- map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-          -- map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
-          -- map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
-          -- map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-          -- map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
-
-          -- Text object
-          -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-          -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-        end
-      }
-    end
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter', --[[ , {'do': ':TSUpdate'} ]]
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        highlight = {
-          enable = true,
-          disable = {},
-        },
-        indent = {
-          enable = false,
-          disable = {},
-        },
-        ensure_installed = {
-          -- "javascript",
-          -- "tsx",
-          -- "toml",
-          -- "fish",
-          -- "php",
-          -- "json",
-          -- "yaml",
-          -- "swift",
-          -- "html",
-          -- "scss",
-          "lua",
-          "vim",
-          -- "elixir",
-          -- "c",
-          "c_sharp"
-        },
-        sync_install = false,
-        -- refactor = {
-        --   smart_rename = {
-        --     enable = true,
-        --     keymaps = {
-        --       smart_rename = "grr",
-        --     },
-        --   },
-        --   highlight_definitions = {
-        --     enable = true,
-        --     -- Set to false if you have an `updatetime` of ~100.
-        --     clear_on_cursor_move = false,
-        --   },
-        -- },
-        -- textobjects = {
-        --   select = {
-        --     enable = true,
-        --     lookahead = true,
-        --     keymaps = {
-        --       ["af"] = "@function.outer",
-        --       ["if"] = "@function.inner",
-        --     }
-        --   }
-        -- }
-      }
-    end
-  }
+  use 'nvim-treesitter/nvim-treesitter'
 
   use 'neovim/nvim-lspconfig'
-  use {
-    'williamboman/nvim-lsp-installer',
-    config = function ()
-      -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
-      -- or if the server is already installed).
-      require("nvim-lsp-installer").on_server_ready(function(server)
-        local opts = {}
+  use 'williamboman/nvim-lsp-installer'
 
-        -- (optional) Customize the options passed to the server
-        -- if server.name == "tsserver" then
-        --     opts.root_dir = function() ... end
-        -- end
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
-        -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-        -- before passing it onwards to lspconfig.
-        -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-        server:setup(opts)
-      end)
-    end
-  }
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
-  }
-
-  use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
+  -- Alternative to 'tomtom/tcomment_vim'
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+  use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim", config = function() require("todo-comments").setup{} end }
 
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -199,7 +49,6 @@ local function configure_plugins(use)
   -- use 'L3MON4D3/LuaSnip'
   -- use 'saadparwaiz1/cmp_luasnip'
   -- use 'honza/vim-snippets'
-  --
   --
   -- use 'tpope/vim-fugitive'
   --
@@ -217,12 +66,19 @@ end
 
 local packer = require('packer')
 
+-- NOTE: passing 1 as argument allows to handle every plugin
 packer.set_handler(1, function (_, plugin_spec, _)
-  if not plugin_spec.setup then
-    local ok, aj = pcall(require, 'aj.' .. plugin_spec.short_name)
-    if ok then
+  local ok, aj = pcall(require, 'aj.' .. plugin_spec.short_name)
+  if ok then
+    if not plugin_spec.setup then
       plugin_spec.setup = aj.setup
     end
+
+    if not plugin_spec.config then
+      plugin_spec.config = aj.config
+    end
+  else
+    vim.notify('Cant load custom config for ' .. plugin_spec.short_name)
   end
 end)
 
