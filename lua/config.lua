@@ -116,6 +116,7 @@ local function configure_plugins(use)
           -- "html",
           -- "scss",
           "lua",
+          "vim",
           -- "elixir",
           -- "c",
           "c_sharp"
