@@ -1,11 +1,13 @@
-require('bootstrap')
+DEBUG = true
+
+require('packer_bootstrap')
 
 local ok, impatient = pcall(require, 'impatient')
-if ok then
+if ok and DEBUG then
   impatient.enable_profile()
 end
 
 require('options')
-require('config')
+require('packer_config')
 require('mappings')
 

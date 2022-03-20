@@ -77,8 +77,6 @@ packer.set_handler(1, function (_, plugin_spec, _)
     if not plugin_spec.config then
       plugin_spec.config = aj.config
     end
-  else
-    vim.notify('Cant load custom config for ' .. plugin_spec.short_name)
   end
 end)
 
@@ -86,7 +84,7 @@ packer.startup({
   configure_plugins,
   config = {
     profile = {
-      enable = true,
+      enable = DEBUG,
       threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
     }
   }
