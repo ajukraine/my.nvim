@@ -72,17 +72,17 @@ end
 
 local packer = require('packer')
 
--- NOTE: passing 1 as argument allows to handle every plugin
+-- NOTE: passing 1 as parameter allows to handle every plugin
 packer.set_handler(1, function (_, plugin_spec, _)
-  local ok, aj = pcall(require, 'aj.' .. plugin_spec.short_name)
+  local ok, aj_spec = pcall(require, 'aj.' .. plugin_spec.short_name)
   if ok then
-    if not plugin_spec.setup then
-      plugin_spec.setup = aj.setup
+    if type(aj_spec) == 'function' then
+      plugin_spec.config = aj_spec
+      return
     end
 
-    if not plugin_spec.config then
-      plugin_spec.config = aj.config
-    end
+    plugin_spec.setup = plugin_spec.setup or aj_spec.setup
+    plugin_spec.config = plugin_spec.config or aj_spec.config
   end
 end)
 
