@@ -38,11 +38,17 @@ local function configure_plugins(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim", config = function() require("todo-comments").setup{} end }
 
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-buffer'
+    }
+  }
+
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
   --
-  -- use 'hrsh7th/nvim-cmp'
   -- use 'hrsh7th/cmp-nvim-lsp'
   -- use 'onsails/lspkind-nvim'
   --
