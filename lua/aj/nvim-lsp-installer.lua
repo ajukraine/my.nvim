@@ -10,6 +10,19 @@ return {
       --     opts.root_dir = function() ... end
       -- end
 
+      if server.name == 'sumneko_lua' then
+        -- TODO: Implemented 'safe set' function to create deep nested configs in one go
+        opts = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' }
+              }
+            }
+          }
+        }
+      end
+
       -- This setup() function will take the provided server configuration and decorate it with the necessary properties
       -- before passing it onwards to lspconfig.
       -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
