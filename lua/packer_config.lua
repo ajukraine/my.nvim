@@ -45,6 +45,8 @@ local function configure_plugins(use)
     }
   }
 
+  use 'b4b4r07/vim-sqlfmt'
+
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
