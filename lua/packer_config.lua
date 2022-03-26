@@ -43,7 +43,17 @@ local function configure_plugins(use)
     requires = { 'hrsh7th/cmp-buffer' }
   }
 
+  use {
+    'kristijanhusak/vim-dadbod-ui',
+    requires = { 'tpope/vim-dadbod' },
+    cmd = 'DBUI'
+  }
+
   use 'b4b4r07/vim-sqlfmt'
+
+  use 'mustache/vim-mustache-handlebars'
+
+  use 'diepm/vim-rest-console'
 
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
