@@ -8,14 +8,12 @@ local function configure_plugins(use)
   -- Improves startup time with use of optimizations and caching
   use 'lewis6991/impatient.nvim'
 
-  use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
+  use { 'dstein64/vim-startuptime', cmd = 'StartupTime', cond = DEBUG }
 
   use 'sainnhe/gruvbox-material'
 
   use 'tpope/vim-unimpaired'
   use 'junegunn/vim-easy-align'
-
-  use { 'kyazdani42/nvim-web-devicons', opt = false }
 
   -- FIX: Currently can't load config with '.' suffix in name
   use {
@@ -35,7 +33,7 @@ local function configure_plugins(use)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- Alternative to 'tomtom/tcomment_vim'
-  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup{} end }
   use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim", config = function() require("todo-comments").setup{} end }
 
   use {
