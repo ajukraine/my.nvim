@@ -40,9 +40,7 @@ local function configure_plugins(use)
 
   use {
     'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-buffer'
-    }
+    requires = { 'hrsh7th/cmp-buffer' }
   }
 
   use 'b4b4r07/vim-sqlfmt'
