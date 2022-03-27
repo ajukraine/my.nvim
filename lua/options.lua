@@ -3,7 +3,12 @@ filetype plugin indent on
 syntax on
 ]]
 
-vim.cmd [[autocmd vimenter * ++nested colorscheme gruvbox-material]]
+vim.api.nvim_create_autocmd('VimEnter', {
+  pattern = '*',
+  command = [[colorscheme gruvbox-material]],
+  nested  = true,
+  group   = vim.api.nvim_create_augroup('Colorscheme', {})
+})
 
 local options = {
   compatible     = false,
