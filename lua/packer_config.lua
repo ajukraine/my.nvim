@@ -90,15 +90,14 @@ packer.set_handler(1, function (_, plugin_spec, _)
   end
 end)
 
-packer.startup({
-  configure_plugins,
-  config = {
-    profile = {
-      enable = DEBUG,
-      threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-    }
+packer.init {
+  profile = {
+    enable = DEBUG,
+    threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
   }
-})
+}
+
+configure_plugins(packer.use)
 
 --
 -- local parser_config = require ("nvim-treesitter.parsers").get_parser_configs()

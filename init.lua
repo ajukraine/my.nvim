@@ -1,6 +1,9 @@
 DEBUG = true
 
-require('packer_bootstrap')
+if DEBUG then
+  vim.cmd [[set packpath?]]
+  vim.cmd [[set rtp?]]
+end
 
 local ok, impatient = pcall(require, 'impatient')
 if ok and DEBUG then
@@ -8,6 +11,8 @@ if ok and DEBUG then
 end
 
 require('options')
-require('packer_config')
 require('mappings')
+
+require('packer_bootstrap')
+require('packer_config')
 
