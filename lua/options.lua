@@ -1,6 +1,6 @@
 vim.cmd [[
 filetype plugin indent on
-syntax on
+" syntax on
 ]]
 
 vim.api.nvim_create_autocmd('VimEnter', {
