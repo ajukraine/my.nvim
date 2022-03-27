@@ -1,5 +1,4 @@
 return {
-  'sainnhe/gruvbox-material',
   setup = function ()
     vim.g.gruvbox_material_better_performance = 1
 

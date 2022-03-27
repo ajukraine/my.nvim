@@ -41,11 +41,7 @@ local function configure_plugins(use)
     requires = { 'hrsh7th/cmp-buffer' }
   }
 
-  use {
-    'kristijanhusak/vim-dadbod-ui',
-    requires = { 'tpope/vim-dadbod' },
-    cmd = 'DBUI'
-  }
+  use { 'kristijanhusak/vim-dadbod-ui', requires = { 'tpope/vim-dadbod' }, cmd = 'DBUI' }
 
   use 'b4b4r07/vim-sqlfmt'
 
@@ -82,15 +78,15 @@ local packer = require('packer')
 
 -- NOTE: passing 1 as parameter allows to handle every plugin
 packer.set_handler(1, function (_, plugin_spec, _)
-  local ok, aj_spec = pcall(require, 'aj.' .. plugin_spec.short_name)
-  if ok then
-    if type(aj_spec) == 'function' then
-      plugin_spec.config = aj_spec
+  local custom_spec_loaded, custom_spec = pcall(require, 'aj.' .. plugin_spec.short_name)
+  if custom_spec_loaded then
+    if type(custom_spec) == 'function' then
+      plugin_spec.config = custom_spec
       return
     end
 
-    plugin_spec.setup = plugin_spec.setup or aj_spec.setup
-    plugin_spec.config = plugin_spec.config or aj_spec.config
+    plugin_spec.setup = plugin_spec.setup or custom_spec.setup
+    plugin_spec.config = plugin_spec.config or custom_spec.config
   end
 end)
 
