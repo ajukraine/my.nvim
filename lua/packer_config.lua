@@ -38,7 +38,10 @@ local function configure_plugins(use)
 
   use {
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-buffer' }
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp'
+    }
   }
 
   use { 'kristijanhusak/vim-dadbod-ui', requires = { 'tpope/vim-dadbod' }, cmd = 'DBUI' }
