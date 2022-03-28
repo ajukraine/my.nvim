@@ -49,6 +49,8 @@ local function configure_plugins(use)
 
   use 'diepm/vim-rest-console'
 
+  use 'editorconfig/editorconfig-vim'
+
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
