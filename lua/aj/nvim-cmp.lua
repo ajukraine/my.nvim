@@ -4,10 +4,10 @@ return function ()
   cmp.setup {
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'buffer' }
+      { name = 'buffer', keyword_length = 5 }
     },
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
       native_menu = false
     }
   }
