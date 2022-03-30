@@ -54,6 +54,10 @@ local function configure_plugins(use)
 
   use 'editorconfig/editorconfig-vim'
 
+  use 'vim-test/vim-test'
+
+  use { 'rcarriga/vim-ultest', run = ":UpdateRemotePlugins" }
+
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
