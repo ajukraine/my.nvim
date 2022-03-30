@@ -23,6 +23,15 @@ return {
         }
       end
 
+      opts.on_attach = function (_, buffer_number)
+        local key_opts = { noremap = true, buffer = buffer_number }
+
+        vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, key_opts)
+        vim.keymap.set('n', '<leader>lh', vim.lsp.buf.signature_help, key_opts)
+        vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, key_opts)
+        vim.keymap.set('n', '<leader>lk', vim.lsp.buf.hover, key_opts)
+      end
+
       -- This setup() function will take the provided server configuration and decorate it with the necessary properties
       -- before passing it onwards to lspconfig.
       -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
