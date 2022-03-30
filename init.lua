@@ -1,9 +1,9 @@
 DEBUG = true
 
-if DEBUG then
-  vim.cmd [[set packpath?]]
-  vim.cmd [[set rtp?]]
-end
+-- if DEBUG then
+--   vim.cmd [[set packpath?]]
+--   vim.cmd [[set rtp?]]
+-- end
 
 function _G.P(v)
   print(vim.inspect(v))
