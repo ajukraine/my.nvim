@@ -56,6 +56,8 @@ local function configure_plugins(use)
 
   use 'vim-test/vim-test'
 
+  use 'github/copilot.vim'
+
   use { 'rcarriga/vim-ultest', run = ":UpdateRemotePlugins" }
 
   -- use 'folke/twilight.nvim'
