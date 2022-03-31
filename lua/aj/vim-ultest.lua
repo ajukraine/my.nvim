@@ -11,7 +11,6 @@ return function()
   vim.g['test#csharp#patterns'] = patterns
 
   -- create autocmd using lua nvim_autogroup_create
-
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
     callback = function()
