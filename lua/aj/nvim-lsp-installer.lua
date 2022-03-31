@@ -3,6 +3,11 @@ return {
     -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
     -- or if the server is already installed).
     require("nvim-lsp-installer").on_server_ready(function(server)
+      -- disable omnisharp server
+      if server.name == 'omnisharp' then
+        return false
+      end
+
       local opts = {}
 
       -- (optional) Customize the options passed to the server
