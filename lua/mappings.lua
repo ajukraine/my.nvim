@@ -16,6 +16,8 @@ cmd('<S-Tab>',    'bprev')
 
 cmd('<leader>gb', 'Gitsigns toggle_current_line_blame')
 
+cmd('dq', 'cclose')
+
 -- Telescope
 local telescope_prefix = '<leader><leader>'
 local telescope_pickers = {
