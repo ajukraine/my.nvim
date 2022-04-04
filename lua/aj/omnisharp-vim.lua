@@ -5,12 +5,17 @@ function M.setup()
   vim.g.OmniSharp_highlighting = 0
   vim.g.OmniSharp_highlight_groups = {
     EnumMemberName = 'Identifier',
-    ClassName = 'TSType',
-    ParameterName = 'TSSymbol',
-    PropertyName = 'TSSymbol',
-    LocalName = 'TSSymbol',
-    FieldName = 'TSSymbol',
-    ConstantName = 'TSSymbol',
+    ClassName = '',
+    ParameterName = '',
+    PropertyName = '',
+    LocalName = '',
+    FieldName = '',
+    ConstantName = '',
+    Keyword = 'TSKeyword',
+    ControlKeyword = 'TSKeyword',
+    StringLiteral = 'TSString',
+    NumericLiteral = 'TSNumber',
+    Operator = 'TSOperator',
   }
 
   local function create_mappings()
