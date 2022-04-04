@@ -5,6 +5,8 @@ return function()
   -- configure ultest-vim to use pty
   vim.g.ultest_use_pty = 1
 
+  -- vim.g.ultest_summary_open = 'botright split | resize ' .. vim.g.ultest_summary_width
+
   -- add new pattern to test csharp patterns
   local patterns = vim.g['test#csharp#patterns']
   table.insert(patterns.test, [[\v^\s*public Task (\w+)]])
