@@ -4,11 +4,14 @@ return function ()
   cmp.setup {
     sources = {
       { name = 'nvim_lsp' },
+      -- { name = 'omni', trigger_characters = { '.' } },
       { name = 'buffer', keyword_length = 5 }
     },
     experimental = {
       ghost_text = false,
-      native_menu = false
+    },
+    view = {
+      entries = 'custom'
     }
   }
 end

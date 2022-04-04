@@ -40,7 +40,8 @@ local function configure_plugins(use)
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp'
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-omni'
     }
   }
 
@@ -64,7 +65,8 @@ local function configure_plugins(use)
 
   use 'junegunn/fzf'
 
-  use 'dense-analysis/ale'
+  -- use { 'dense-analysis/ale', commit = 'bc406a8' }
+  use { 'dbalatero/ale', branch = 'dbalatero/send-ale-to-neovim-diagnostics' }
 
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-textobjects'
