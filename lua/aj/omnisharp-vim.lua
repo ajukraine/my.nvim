@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   vim.g.OmniSharp_server_use_net6 = 1
-  vim.g.OmniSharp_highlighting = 2
+  vim.g.OmniSharp_highlighting = 0
   vim.g.OmniSharp_highlight_groups = {
     EnumMemberName = 'Identifier',
     ClassName = 'TSType',
