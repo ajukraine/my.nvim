@@ -34,7 +34,13 @@ local function configure_plugins(use)
 
   -- Alternative to 'tomtom/tcomment_vim'
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup{} end }
-  use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim", config = function() require("todo-comments").setup{} end }
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup { sign_priority = 5 }
+    end
+  }
 
   use {
     'hrsh7th/nvim-cmp',
