@@ -18,6 +18,7 @@ cmd('<leader>gb', 'Gitsigns toggle_current_line_blame')
 
 cmd('dq', 'cclose')
 cmd('dl', 'lclose')
+cmd([[\\]], 'nohlsearch')
 
 cmd('<leader>tt', '<Plug>(ultest-run-nearest)')
 

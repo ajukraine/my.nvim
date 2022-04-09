@@ -20,11 +20,12 @@ function M.setup()
 
   local function create_mappings()
     local mappings = {
-      ['<leader>l'] = '<Plug>(omnisharp_find_usages)',
+      ['<leader>u'] = '<Plug>(omnisharp_find_usages)',
       ['<leader>D'] = '<Plug>(omnisharp_go_to_definition)',
       ['<leader>i'] = '<Plug>(omnisharp_find_implementations)',
       ['<leader>r'] = '<Plug>(omnisharp_rename)',
       ['<leader>a'] = '<Plug>(omnisharp_code_actions)',
+      ['<leader>f'] = '<Plug>(omnisharp_code_format)',
       ['[[']        = '<Plug>(omnisharp_navigate_up)',
       [']]']        = '<Plug>(omnisharp_navigate_down)',
     }
