@@ -5,7 +5,7 @@ function M.setup()
   vim.g.OmniSharp_highlighting = 0
   vim.g.OmniSharp_highlight_groups = {
     EnumMemberName = 'Identifier',
-    ClassName = '',
+    ClassName = 'TSType',
     ParameterName = '',
     PropertyName = '',
     LocalName = '',
