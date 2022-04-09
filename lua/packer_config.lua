@@ -57,7 +57,8 @@ local function configure_plugins(use)
 
   use 'mustache/vim-mustache-handlebars'
 
-  use 'diepm/vim-rest-console'
+  -- use 'diepm/vim-rest-console'
+  use 'emaniacs/vim-rest-console'
 
   use 'editorconfig/editorconfig-vim'
 
