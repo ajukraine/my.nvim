@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
   pattern = '*',
   command = [[colorscheme gruvbox-material]],
   nested  = true,
-  group   = vim.api.nvim_create_augroup('Colorscheme', {})
+  group   = vim.api.nvim_create_augroup('aj_set_colorcheme', {})
 })
 
 local options = {

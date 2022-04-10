@@ -23,6 +23,13 @@ local function configure_plugins(use)
     cmd = 'NvimTreeToggle',
   }
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    as = 'lualine',
+    event = 'ColorScheme', -- BUG: lualine doesn't work before color scheme is not completely initialized
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
+
   use { 'lewis6991/gitsigns.nvim', as = 'gitsigns', requires = { 'nvim-lua/plenary.nvim' }, }
 
   use {
