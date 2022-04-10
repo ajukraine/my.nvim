@@ -3,7 +3,7 @@ local function configure_plugins(use)
   use 'wbthomason/packer.nvim'
 
   -- Fixes slow built-in filetype.vim
-  use 'nathom/filetype.nvim'
+  use { 'nathom/filetype.nvim', as = 'filetype' }
 
   -- Improves startup time with use of optimizations and caching
   use 'lewis6991/impatient.nvim'
@@ -80,6 +80,7 @@ local function configure_plugins(use)
   -- use { 'dense-analysis/ale', commit = 'bc406a8' }
   use { 'dbalatero/ale', branch = 'dbalatero/send-ale-to-neovim-diagnostics' }
 
+  use 'jdonaldson/vaxe'
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
   --
