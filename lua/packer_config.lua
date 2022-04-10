@@ -71,7 +71,11 @@ local function configure_plugins(use)
 
   use 'github/copilot.vim'
 
-  use { 'rcarriga/vim-ultest', run = ":UpdateRemotePlugins" }
+  use {
+    'rcarriga/vim-ultest',
+    run = ":UpdateRemotePlugins",
+    cmd = { 'Ultest', 'UltestSummary' }
+  }
 
   use 'OmniSharp/omnisharp-vim'
 
