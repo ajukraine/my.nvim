@@ -25,7 +25,12 @@ local function configure_plugins(use)
 
   use { 'lewis6991/gitsigns.nvim', as = 'gitsigns', requires = { 'nvim-lua/plenary.nvim' }, }
 
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects'
+    }
+  }
 
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
@@ -76,10 +81,8 @@ local function configure_plugins(use)
   use { 'dbalatero/ale', branch = 'dbalatero/send-ale-to-neovim-diagnostics' }
 
   -- use 'folke/twilight.nvim'
-  -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
   --
-  -- use 'hrsh7th/cmp-nvim-lsp'
   -- use 'onsails/lspkind-nvim'
   --
   -- use 'L3MON4D3/LuaSnip'
