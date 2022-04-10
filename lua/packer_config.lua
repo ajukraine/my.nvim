@@ -91,6 +91,11 @@ local function configure_plugins(use)
   -- use { 'dense-analysis/ale', commit = 'bc406a8' }
   use { 'dbalatero/ale', branch = 'dbalatero/send-ale-to-neovim-diagnostics' }
 
+  use {
+    'simrat39/symbols-outline.nvim',
+    cmd = 'SymbolsOutline'
+  }
+
   -- use 'jdonaldson/vaxe'
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
