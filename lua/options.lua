@@ -10,6 +10,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
   group   = vim.api.nvim_create_augroup('aj_set_colorcheme', {})
 })
 
+vim.g.loaded_netrwPlugin = 1
+
 local options = {
   compatible     = false,
   termguicolors  = true,
