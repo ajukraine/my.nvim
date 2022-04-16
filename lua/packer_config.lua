@@ -101,6 +101,8 @@ local function configure_plugins(use)
 
   use 'adelarsq/neofsharp.vim'
 
+  use 'rcarriga/nvim-notify'
+
   -- use 'jdonaldson/vaxe'
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
