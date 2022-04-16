@@ -96,6 +96,8 @@ local function configure_plugins(use)
     cmd = 'SymbolsOutline'
   }
 
+  use 'adelarsq/neofsharp.vim'
+
   -- use 'jdonaldson/vaxe'
   -- use 'folke/twilight.nvim'
   -- use 'nvim-treesitter/nvim-treesitter-refactor'
