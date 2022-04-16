@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: Move from setup to config (reduce startup time)
 function M.setup()
   vim.g.OmniSharp_server_use_net6 = 1
   vim.g.OmniSharp_highlighting = 0

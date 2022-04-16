@@ -84,7 +84,10 @@ local function configure_plugins(use)
     cmd = { 'Ultest', 'UltestSummary' }
   }
 
-  use 'OmniSharp/omnisharp-vim'
+  use {
+    'OmniSharp/omnisharp-vim',
+    ft = { 'cs' }
+  }
 
   use 'junegunn/fzf'
 
